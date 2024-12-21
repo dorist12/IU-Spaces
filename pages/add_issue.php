@@ -31,7 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 VALUES ('$building_name', '$room_number', '$issue_description', '$priority')";
 
         if ($conn->query($sql) === TRUE) {
-            echo "<p style='color: green; text-align: center;'>Issue reported successfully!</p>";
+            // Redirect to a success page or show a success message
+            header("Location: success_page.php"); // redirect to a success page
+            exit(); // Ensure that no other code is executed after the redirect
         } else {
             echo "<p style='color: red; text-align: center;'>Error: " . $conn->error . "</p>";
         }
@@ -45,6 +47,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
+<!-- Add this HTML block to display success message instead of form after submission -->
+<?php if ($_SERVER["REQUEST_METHOD"] == "POST" && empty($errors)): ?>
+    <div style="text-align: center; margin-top: 20px; color: green; background-color: #f4f4f4; padding: 15px; border-radius: 5px;">
+        <h2>Thank you for submitting your issue!</h2>
+        <p>Your issue has been successfully reported.</p>
+    </div>
+<?php endif; ?>
 
 <h2 style="color: white; text-align: center; margin-top: 0; padding: 20px; background-color: #4CAF50; border-radius: 5px;">
     Report an Issue
@@ -80,4 +90,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </button>
 </form>
 
-<?php include '../includes/footer.php'; // Include the footer ?>
+<?php include '../includes/footer.php'; // Include the footer ?> 
