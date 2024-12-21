@@ -1,0 +1,20 @@
+# Ignore system files
+*.log
+*.tmp
+.DS_Store
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore IDE and project-specific files
+.idea/
+.vscode/
+
+# Ignore operating system specific files
+Thumbs.db
+ehthumbs.db
+
+# Ignore other unnecessary files
+ntuser.dat
+ntuser.ini
+ 
